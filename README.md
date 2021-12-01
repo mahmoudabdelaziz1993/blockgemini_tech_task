@@ -5,8 +5,11 @@ It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-
 
 ## Preview
 
-![all posts](public\screencapture\screencapture-localhost-3000-2021-12-01-06_21_03.png "Optional Title")
+![all posts](\screencapture\screencapture-localhost-3000-2021-12-01-06_21_03.png "Optional Title")
 
-![all posts](public\screencapture\screencapture-localhost-3000-posts-add-2021-12-01-06_22_56.png "Optional Title")
+![all posts\screencapture\screencapture-localhost-3000-posts-add-2021-12-01-06_22_56.png "Optional Title")
 
 ## How to run
+```
+npm run dev
+```
