@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { SaveAsIcon } from "@heroicons/react/solid";
+import { PostsContext } from "../../context/PostContext";
+import { ErrorMessage } from "@hookform/error-message";
+
 function add() {
+  const { addPost } = useContext(PostsContext);
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  } = useForm({
+    criteriaMode: "all",
+  });
+  const onSubmit = (data) => {
+    addPost(data);
+    reset();
+  };
 
   return (
     <div className="w-full max-w-xs m-auto mt-3 rounded-lg">
@@ -25,14 +36,27 @@ function add() {
           </label>
           <input
             className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            {...register("title", { required: true })}
+            {...register("title", {
+              required: "This is feild required.",
+              minLength: {
+                value: 5,
+                message: "This feild must be at least 5 characters.",
+              },
+            })}
           />
           {/* errors will return when field validation fails  */}
-          {errors.exampleRequired && (
-            <span className="text-xs italic text-red-500">
-              This field is required
-            </span>
-          )}
+          <ErrorMessage
+            errors={errors}
+            name="title"
+            render={({ messages }) =>
+              messages &&
+              Object.entries(messages).map(([type, message]) => (
+                <p className="block text-xs italic text-red-500" key={type}>
+                  {message}
+                </p>
+              ))
+            }
+          />
         </div>
 
         <div className="mb-4">
@@ -44,14 +68,31 @@ function add() {
           </label>
           <input
             className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            {...register("ImageUrl", { required: true })}
+            {...register("ImageUrl", {
+              required: "This is feild required.",
+              pattern: {
+                value: /(http(s?):)/g,
+                message: "This faild image  URL ",
+              },
+              minLength: {
+                value: 10,
+                message: "This feild must be at least 10 characters.",
+              },
+            })}
           />
           {/* errors will return when field validation fails  */}
-          {errors.exampleRequired && (
-            <span className="text-xs italic text-red-500">
-              This field is required
-            </span>
-          )}
+          <ErrorMessage
+            errors={errors}
+            name="ImageUrl"
+            render={({ messages }) =>
+              messages &&
+              Object.entries(messages).map(([type, message]) => (
+                <p className="block text-xs italic text-red-500" key={type}>
+                  {message}
+                </p>
+              ))
+            }
+          />
         </div>
         <button
           type="submit"

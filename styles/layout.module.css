@@ -1,4 +1,4 @@
 .wrapper_doodle {
-  @apply min-w-full min-h-screen bg-fixed bg-gray-200 bg-top bg-no-repeat md:bg-bottom;
-  background-image: url("../public/assets/PngItem.png");
+  @apply min-w-full min-h-screen bg-fixed bg-gray-200 bg-top bg-no-repeat bg-cover md:bg-bottom;
+  background-image: url("../public/assets/giphy.gif");
 }

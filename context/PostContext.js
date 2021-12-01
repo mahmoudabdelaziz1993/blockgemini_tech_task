@@ -3,10 +3,12 @@ import { posts } from "../utils/data";
 import reducer from "./reducers/posts";
 
 export const PostsContext = createContext();
-
-const initialState = localStorage.getItem("Global-blockGerminiTask")
-  ? JSON.parse(localStorage.getItem("Global-blockGerminiTask"))
-  : posts;
+const ISSERVER = typeof window === "undefined";
+const initialState =
+  typeof window !== "undefined" &&
+  localStorage?.getItem("Global-blockGerminiTask")
+    ? JSON.parse(localStorage.getItem("Global-blockGerminiTask"))
+    : posts;
 
 function PostsContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -15,8 +17,10 @@ function PostsContextProvider({ children }) {
     localStorage.setItem("Global-blockGerminiTask", JSON.stringify(state));
   }, [state]);
 
+  const addPost = async (payload) => dispatch({ type: "ADD_POST", payload });
+
   return (
-    <PostsContext.Provider value={{ ...state }}>
+    <PostsContext.Provider value={{ posts: [...state], addPost }}>
       {children}
     </PostsContext.Provider>
   );
