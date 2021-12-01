@@ -5,9 +5,9 @@ It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-
 
 ## Preview
 
-![all posts](\screencapture\screencapture-localhost-3000-2021-12-01-06_21_03.png "Optional Title")
+![all posts](https://github.com/mahmoudabdelaziz1993/blockgemini_tech_task/blob/main/public/screencapture/screencapture-localhost-3000-2021-12-01-06_21_03.png?raw=true)
 
-![all posts\screencapture\screencapture-localhost-3000-posts-add-2021-12-01-06_22_56.png "Optional Title")
+![all posts](https://github.com/mahmoudabdelaziz1993/blockgemini_tech_task/blob/main/public/screencapture/screencapture-localhost-3000-posts-add-2021-12-01-06_22_56.png?raw=true)
 
 ## How to run
 ```
